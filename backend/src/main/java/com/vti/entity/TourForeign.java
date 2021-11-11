@@ -56,30 +56,28 @@ public class TourForeign implements Serializable {
 	@Column(name = "`day2`", length = 1000)
 	private String day2;
 
-	@Column(name = "`vehicle`", nullable = false)
+	@Column(name = "`vehicle`")
 	private String vehicle = "PLANE";
 
 	public TourForeign() {
 		super();
 	}
 
-	public TourForeign(short tourForeignId, String nameTour, String timer, LocalDate departureDay, int slotBlank,
-			String money, String img1, String img2, String img3, String img4, String img5, String day1, String day2) {
+	
+
+	public TourForeign(String nameTour, String timer, LocalDate departureDay, int slotBlank, String money, String day1,
+			String day2) {
 		super();
-		this.tourForeignId = tourForeignId;
 		this.nameTour = nameTour;
 		this.timer = timer;
 		this.departureDay = departureDay;
 		this.slotBlank = slotBlank;
 		this.money = money;
-		this.img1 = img1;
-		this.img2 = img2;
-		this.img3 = img3;
-		this.img4 = img4;
-		this.img5 = img5;
 		this.day1 = day1;
 		this.day2 = day2;
 	}
+
+
 
 	public short getTourForeignId() {
 		return tourForeignId;
@@ -184,4 +182,14 @@ public class TourForeign implements Serializable {
 	public void setDay2(String day2) {
 		this.day2 = day2;
 	}
+
+	public String getVehicle() {
+		return vehicle;
+	}
+
+	public void setVehicle(String vehicle) {
+		this.vehicle = vehicle;
+	}
+	
+	
 }

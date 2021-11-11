@@ -19,5 +19,11 @@ public class TourForeignService implements ITourForeignService {
 		// TODO Auto-generated method stub
 		return repository.findAll(pageable);
 	}
-	
+
+	@Override
+	public TourForeign getTourForeignByID(short id) {
+		// TODO Auto-generated method stub
+		return repository.findById(id).get();
+	}
+
 }

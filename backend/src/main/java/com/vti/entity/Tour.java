@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.web.multipart.MultipartFile;
+
 @Entity
 @Table(name = "`Tour`")
 public class Tour implements Serializable {
@@ -26,7 +28,7 @@ public class Tour implements Serializable {
 	@Column(name = "`timer`", nullable = false, length = 500)
 	private String timer;
 
-	@Column(name = "`departureDay`", nullable = false)
+	@Column(name = "`departureDay`")
 	private LocalDate departureDay;
 
 	@Column(name = "`slotBlank`", nullable = false)
@@ -56,17 +58,17 @@ public class Tour implements Serializable {
 	@Column(name = "`day2`", length = 1000)
 	private String day2;
 
-	@Column(name = "`vehicle`", nullable = false)
+	@Column(name = "`vehicle`")
 	private String vehicle = "CAR";
 
 	public Tour() {
 		super();
 	}
 
-	public Tour(short tourId, String nameTour, String timer, LocalDate departureDay, int slotBlank, String money,
-			String img1, String img2, String img3, String img4, String img5, String day1, String day2) {
+
+	public Tour(String nameTour, String timer, LocalDate departureDay, int slotBlank, String money, String img1,
+			String img2, String img3, String img4, String img5, String day1, String day2) {
 		super();
-		this.tourId = tourId;
 		this.nameTour = nameTour;
 		this.timer = timer;
 		this.departureDay = departureDay;
@@ -80,6 +82,22 @@ public class Tour implements Serializable {
 		this.day1 = day1;
 		this.day2 = day2;
 	}
+
+
+
+	public Tour(String nameTour, String timer, LocalDate departureDay, int slotBlank, String money, String day1,
+			String day2) {
+		super();
+		this.nameTour = nameTour;
+		this.timer = timer;
+		this.departureDay = departureDay;
+		this.slotBlank = slotBlank;
+		this.money = money;
+		this.day1 = day1;
+		this.day2 = day2;
+		
+	}
+
 
 	public short getTourId() {
 		return tourId;
@@ -184,5 +202,16 @@ public class Tour implements Serializable {
 	public void setDay2(String day2) {
 		this.day2 = day2;
 	}
+
+
+	public String getVehicle() {
+		return vehicle;
+	}
+
+
+	public void setVehicle(String vehicle) {
+		this.vehicle = vehicle;
+	}
+	
 
 }

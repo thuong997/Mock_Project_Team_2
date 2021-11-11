@@ -26,12 +26,12 @@ public class FileController {
 	private IFileService fileService;
 
 	@PostMapping(value = "/image")
-	public ResponseEntity<?> upLoadImage(@RequestParam(name = "image") MultipartFile image) throws IOException {
+	public ResponseEntity<?> upLoadImage(@RequestParam(name = "img1") MultipartFile img1) throws IOException {
 
-		if (!new FileManager().isTypeFileImage(image)) {
+		if (!new FileManager().isTypeFileImage(img1)) {
 			return new ResponseEntity<>("File must be image!", HttpStatus.UNPROCESSABLE_ENTITY);
-		}
+		}	
 		
-		return new ResponseEntity<>(fileService.uploadImage(image), HttpStatus.OK);
+		return new ResponseEntity<>(fileService.uploadImage(img1), HttpStatus.OK);
 	}
 }

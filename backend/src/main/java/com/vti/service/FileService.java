@@ -12,20 +12,21 @@ import com.vti.utils.FileManager;
 public class FileService implements IFileService {
 
 	private FileManager fileManager = new FileManager();
-	private String linkFolder = "C:\\Mockprojec";
+	private String linkFolder = "C:\\Mockprojec\\img";
 
 	@Override
-	public String uploadImage(MultipartFile image) throws IOException {
+	public String uploadImage(MultipartFile img1) throws IOException {
 
-		String nameImage = new Date().getTime() + "." + fileManager.getFormatFile(image.getOriginalFilename());
 
-		String path = linkFolder + "\\" + nameImage;
+		String nameImg1 = new Date().getTime() + "." + fileManager.getFormatFile(img1.getOriginalFilename());
 
-		fileManager.createNewMultiPartFile(path, image);
+		String path1 = linkFolder + "\\" + nameImg1;
+
+		fileManager.createNewMultiPartFile(path1, img1);
 
 		// TODO save link file to database
 
 		// return link uploaded file
-		return nameImage;
+		return nameImg1;
 	}
 }

@@ -15,11 +15,11 @@ public class FileManager {
 		return file.getContentType().toLowerCase().contains("image");
 	}
 
-	public void createNewMultiPartFile(String path, MultipartFile multipartFile)
-			throws IllegalStateException, IOException {
+	public void createNewMultiPartFile(String path1, MultipartFile multipartFile1)throws IllegalStateException, IOException {
 		// write file
-		File file = new File(path);
-		multipartFile.transferTo(file);
+		File file1 = new File(path1);
+		multipartFile1.transferTo(file1);
+		
 	}
 
 	public String getFormatFile(String input) {
