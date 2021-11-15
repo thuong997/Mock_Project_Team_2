@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { toggleSidebar } from "../redux/actions/sidebarActions";
 
 import {
+  Button,
   Collapse,
   Navbar,
 } from "reactstrap";
@@ -20,6 +21,7 @@ import {
 // import * as Icon from 'react-feather';
 
 import { selectFullName } from "../redux/Selectors/UserLoginInfoSelectors";
+import { Link } from "react-router-dom";
 
 // import { useEffect } from "react";
 // import { useState } from "react";
@@ -32,14 +34,23 @@ const NavbarComponents = (props) => {
   // }
 
   return (
+    <>
+    
     <Navbar color="white" light expand>
-      <img src='https://dulichkhatvongviet.com/wp-content/uploads/2013/07/logo-va-slogan-xuc-tien-du-lich-viet-nam-o-trong-nuoc.jpg'
-      style={{width: '150px', height: '90px', marginLeft:'45%'}} />
+      <Button  style={{marginLeft: '45%'}} >
+      
+        <Link to="/DuLichViet"><img src='https://dulichkhatvongviet.com/wp-content/uploads/2013/07/logo-va-slogan-xuc-tien-du-lich-viet-nam-o-trong-nuoc.jpg' alt='Ảnh'
+      style={{width: '121%', height: '92px', marginLeft: '-13px'}} > 
+        
+        </img></Link>
+        </Button>
 
       <Collapse navbar>
-       
+      
       </Collapse>
+
     </Navbar>
+    </>
   );
 };
 

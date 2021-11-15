@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { enableCorporateTheme } from "../../redux/actions/themeActions";
-
-import Dashboard from "../dashboards/Default";
+import DuLichViet from "../Tour/DuLichViet";
 
 const ThemeCorporate = () => {
   const dispatch = useDispatch();
@@ -11,7 +10,7 @@ const ThemeCorporate = () => {
     dispatch(enableCorporateTheme());
   }, [dispatch])
 
-  return <Dashboard />
+  return <DuLichViet />
 }
 
 export default ThemeCorporate;

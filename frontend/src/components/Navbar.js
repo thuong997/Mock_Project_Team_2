@@ -21,7 +21,7 @@ import {
   Bell,
   BellOff,
   Home,
-  LogIn,
+  
   MessageCircle,
   Settings,
   User
@@ -138,6 +138,7 @@ const NavbarComponent = (props) => {
 
 
   return (
+    // tắt 3 gạch
     <Navbar color="white" light expand>
       <span
         className="sidebar-toggle d-flex mr-2"

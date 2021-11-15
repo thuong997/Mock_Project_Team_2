@@ -374,7 +374,7 @@ const Group = (props) => {
 
                                 <Button color="primary" type="submit" disabled={isSubmitting} >
                                     Save
-                                </Button>{" "}
+                                </Button>
 
                                 <Button color='primary' onClick={() => setOpenModalCreate(false)}>
                                     Canle

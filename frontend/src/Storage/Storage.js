@@ -56,9 +56,25 @@ const getUserInfo = () => {
 
 }
 
+const setTourID = (tourId) => {
+    localStorage.setItem('tourId', tourId);
+}
+
+const getTourID = () => {
+    return localStorage.getItem('tourId');
+}
+
+const setTourForeignID = (tourId) => {
+    localStorage.setItem('tourId', tourId);
+}
+
+const getTourForeignID = () => {
+    return localStorage.getItem('tourId');
+}
+
 const deleteStorage = () => {
    return localStorage.clear();
 }
 
-const storage = { setToken, getToken, setUserInfo, getUserInfo, setRememberMe, isRememberMe, deleteStorage };
+const storage = { setToken, getToken, setUserInfo, getUserInfo, setRememberMe, isRememberMe, deleteStorage, setTourID, getTourID, setTourForeignID, getTourForeignID };
 export default storage;

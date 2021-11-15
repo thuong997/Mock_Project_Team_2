@@ -61,6 +61,7 @@ import Invoice from "../pages/pages/Invoice";
 import Pricing from "../pages/pages/Pricing";
 import Tasks from "../pages/pages/Tasks";
 import Chat from "../pages/pages/Chat";
+import SignUp3 from "../pages/formInfor/formInfor";
 
 // Documentation
 import Introduction from "../pages/docs/Introduction";
@@ -121,6 +122,14 @@ const Group = async(() => import("../pages/group/Group"));
 const DuLichViet = async(() => import("../pages/Tour/DuLichViet"));
 
 const FormTour = async(() => import("../components/FormTour"));
+
+const FormTourAll = async(() => import("../components/FormTourAll"));
+
+const FormTourForeignAll = async(() => import("../components/FormTourForeignAll"));
+
+const TourInfo = async(() => import("../components/TourInfo"));
+
+const TourForeignInfo = async(() => import("../components/TourForeignInfo"));
 
 // Routes
 const landingRoutes = {
@@ -203,6 +212,7 @@ const pageRoutes = {
       name: "Profile",
       component: Profile 
     },
+
     {
       path: "/pages/settings",
       name: "Settings",
@@ -232,6 +242,11 @@ const pageRoutes = {
       path: "/pages/tasks",
       name: "Tasks",
       component: Tasks
+    },
+    {
+      path: "/pages/formInfor/formInfor",
+      name: "SignUp3",
+      component: SignUp3
     },
     {
       path: "/pages/chat",
@@ -607,6 +622,26 @@ const privateRoutes = {
       path: "/private/blank",
       name: "Blank Page",
       component: Blank
+    },
+    {
+      path: "/private/formTourAll",
+      name: "Form Tour All",
+      component: FormTourAll
+    },
+    {
+      path: "/private/formTourForeignAll",
+      name: "Form Tour Foreign All",
+      component: FormTourForeignAll
+    },
+    {
+      path: "/private/tourInfo",
+      name: "Tour Info",
+      component: TourInfo
+    },
+    {
+      path: "/private/tourForeignInfo",
+      name: "Tour Foreign Info",
+      component: TourForeignInfo
     }
   ]
 };

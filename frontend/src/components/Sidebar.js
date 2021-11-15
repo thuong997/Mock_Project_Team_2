@@ -123,7 +123,8 @@ const Sidebar = (props) => {
   //   getProfile();
   // }, []);
   return (
-    <nav
+    // tắt sidebar style={{display: 'none'}}
+    <nav style={{display: 'block'}}
       className={
         "sidebar" +
         (!props.sidebar.isOpen ? " toggled" : "") +
