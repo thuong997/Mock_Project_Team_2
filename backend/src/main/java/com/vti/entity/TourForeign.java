@@ -1,8 +1,6 @@
 package com.vti.entity;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,27 +25,27 @@ public class TourForeign implements Serializable {
 	private String timer;
 
 	@Column(name = "`departureDay`", nullable = false)
-	private LocalDate departureDay;
+	private String departureDay;
 
 	@Column(name = "`slotBlank`", nullable = false)
-	private int slotBlank;
+	private String slotBlank;
 
 	@Column(name = "`money`", nullable = false, length = 50)
 	private String money;
 
-	@Column(name = "`img1`", nullable = false, length = 50)
+	@Column(name = "`img1`", length = 50)
 	private String img1;
 
-	@Column(name = "`img2`", nullable = false, length = 50)
+	@Column(name = "`img2`", length = 50)
 	private String img2;
 
-	@Column(name = "`img3`", nullable = false, length = 50)
+	@Column(name = "`img3`", length = 50)
 	private String img3;
 
-	@Column(name = "`img4`", nullable = false, length = 50)
+	@Column(name = "`img4`", length = 50)
 	private String img4;
 
-	@Column(name = "`img5`", nullable = false, length = 50)
+	@Column(name = "`img5`", length = 50)
 	private String img5;
 
 	@Column(name = "`day1`", length = 1000)
@@ -65,7 +63,7 @@ public class TourForeign implements Serializable {
 
 	
 
-	public TourForeign(String nameTour, String timer, LocalDate departureDay, int slotBlank, String money, String day1,
+	public TourForeign(String nameTour, String timer, String departureDay, String slotBlank, String money, String day1,
 			String day2) {
 		super();
 		this.nameTour = nameTour;
@@ -73,6 +71,25 @@ public class TourForeign implements Serializable {
 		this.departureDay = departureDay;
 		this.slotBlank = slotBlank;
 		this.money = money;
+		this.day1 = day1;
+		this.day2 = day2;
+	}
+
+
+
+	public TourForeign(String nameTour, String timer, String departureDay, String slotBlank, String money, String img1,
+			String img2, String img3, String img4, String img5, String day1, String day2) {
+		super();
+		this.nameTour = nameTour;
+		this.timer = timer;
+		this.departureDay = departureDay;
+		this.slotBlank = slotBlank;
+		this.money = money;
+		this.img1 = img1;
+		this.img2 = img2;
+		this.img3 = img3;
+		this.img4 = img4;
+		this.img5 = img5;
 		this.day1 = day1;
 		this.day2 = day2;
 	}
@@ -103,19 +120,19 @@ public class TourForeign implements Serializable {
 		this.timer = timer;
 	}
 
-	public LocalDate getDepartureDay() {
+	public String getDepartureDay() {
 		return departureDay;
 	}
 
-	public void setDepartureDay(LocalDate departureDay) {
+	public void setDepartureDay(String departureDay) {
 		this.departureDay = departureDay;
 	}
 
-	public int getSlotBlank() {
+	public String getSlotBlank() {
 		return slotBlank;
 	}
 
-	public void setSlotBlank(int slotBlank) {
+	public void setSlotBlank(String slotBlank) {
 		this.slotBlank = slotBlank;
 	}
 

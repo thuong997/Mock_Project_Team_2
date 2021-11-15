@@ -1,7 +1,6 @@
 package com.vti.service;
 
 import java.io.IOException;
-import java.time.LocalDate;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -17,11 +16,14 @@ public interface ITourService {
 
 	Tour getTourByID(short id);
 
-	void createTour(String nameTour, String timer, LocalDate departureDay,
-			int slotBlank,String money,
-			MultipartFile img1, MultipartFile img2,
-			MultipartFile img3, MultipartFile img4,
-			MultipartFile img5, String day1, String day2) throws IOException;
+	String createTour(String nameTour, String timer, String departureDay, String slotBlank, String money,
+			MultipartFile img1, MultipartFile img2, MultipartFile img3, MultipartFile img4, MultipartFile img5,
+			String day1, String day2) throws IOException;
 
+	String updateTour(short tourId, String nameTour, String timer, String departureDay, String slotBlank, String money,
+			MultipartFile img1, MultipartFile img2, MultipartFile img3, MultipartFile img4, MultipartFile img5,
+			String day1, String day2) throws IOException;
+
+	void deleteTour(short tourId);
 
 }

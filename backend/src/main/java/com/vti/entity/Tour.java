@@ -1,16 +1,12 @@
 package com.vti.entity;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Table(name = "`Tour`")
@@ -28,28 +24,28 @@ public class Tour implements Serializable {
 	@Column(name = "`timer`", nullable = false, length = 500)
 	private String timer;
 
-	@Column(name = "`departureDay`")
-	private LocalDate departureDay;
+	@Column(name = "`departureDay`", length = 50)
+	private String departureDay;
 
-	@Column(name = "`slotBlank`", nullable = false)
-	private int slotBlank;
+	@Column(name = "`slotBlank`", nullable = false, length = 50)
+	private String slotBlank;
 
 	@Column(name = "`money`", nullable = false, length = 50)
 	private String money;
 
-	@Column(name = "`img1`", nullable = false, length = 50)
+	@Column(name = "`img1`",  length = 50)
 	private String img1;
 
-	@Column(name = "`img2`", nullable = false, length = 50)
+	@Column(name = "`img2`",  length = 50)
 	private String img2;
 
-	@Column(name = "`img3`", nullable = false, length = 50)
+	@Column(name = "`img3`",  length = 50)
 	private String img3;
 
-	@Column(name = "`img4`", nullable = false, length = 50)
+	@Column(name = "`img4`",  length = 50)
 	private String img4;
 
-	@Column(name = "`img5`", nullable = false, length = 50)
+	@Column(name = "`img5`",  length = 50)
 	private String img5;
 
 	@Column(name = "`day1`", length = 1000)
@@ -65,8 +61,7 @@ public class Tour implements Serializable {
 		super();
 	}
 
-
-	public Tour(String nameTour, String timer, LocalDate departureDay, int slotBlank, String money, String img1,
+	public Tour(String nameTour, String timer, String departureDay, String slotBlank, String money, String img1,
 			String img2, String img3, String img4, String img5, String day1, String day2) {
 		super();
 		this.nameTour = nameTour;
@@ -83,9 +78,7 @@ public class Tour implements Serializable {
 		this.day2 = day2;
 	}
 
-
-
-	public Tour(String nameTour, String timer, LocalDate departureDay, int slotBlank, String money, String day1,
+	public Tour(String nameTour, String timer, String departureDay, String slotBlank, String money, String day1,
 			String day2) {
 		super();
 		this.nameTour = nameTour;
@@ -95,9 +88,8 @@ public class Tour implements Serializable {
 		this.money = money;
 		this.day1 = day1;
 		this.day2 = day2;
-		
-	}
 
+	}
 
 	public short getTourId() {
 		return tourId;
@@ -123,19 +115,19 @@ public class Tour implements Serializable {
 		this.timer = timer;
 	}
 
-	public LocalDate getDepartureDay() {
+	public String getDepartureDay() {
 		return departureDay;
 	}
 
-	public void setDepartureDay(LocalDate departureDay) {
+	public void setDepartureDay(String departureDay) {
 		this.departureDay = departureDay;
 	}
 
-	public int getSlotBlank() {
+	public String getSlotBlank() {
 		return slotBlank;
 	}
 
-	public void setSlotBlank(int slotBlank) {
+	public void setSlotBlank(String slotBlank) {
 		this.slotBlank = slotBlank;
 	}
 
@@ -203,14 +195,20 @@ public class Tour implements Serializable {
 		this.day2 = day2;
 	}
 
-
 	public String getVehicle() {
 		return vehicle;
 	}
 
-
 	public void setVehicle(String vehicle) {
 		this.vehicle = vehicle;
+	}
+
+	@Override
+	public String toString() {
+		return "Tour [tourId=" + tourId + ", nameTour=" + nameTour + ", timer=" + timer + ", departureDay="
+				+ departureDay + ", slotBlank=" + slotBlank + ", money=" + money + ", img1=" + img1 + ", img2=" + img2
+				+ ", img3=" + img3 + ", img4=" + img4 + ", img5=" + img5 + ", day1=" + day1 + ", day2=" + day2
+				+ ", vehicle=" + vehicle + "]";
 	}
 	
 
