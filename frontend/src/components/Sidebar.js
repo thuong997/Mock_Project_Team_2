@@ -124,7 +124,7 @@ const Sidebar = (props) => {
   // }, []);
   return (
     // tắt sidebar style={{display: 'none'}}
-    <nav style={{display: 'block'}}
+    <nav style={{display: 'none'}}
       className={
         "sidebar" +
         (!props.sidebar.isOpen ? " toggled" : "") +

@@ -181,7 +181,8 @@ const PublicInfo = () => {
                     id='avatarInput'
                     ref={avatarInputFile}
                     onChange={onChangeAvatarInput}
-                    style={{ display: 'none' }} />
+                    // style={{ display: 'none' }} 
+                    />
                 </div>
                 <small>
                   For best results, use an image at least 128px by 128px in .jpg

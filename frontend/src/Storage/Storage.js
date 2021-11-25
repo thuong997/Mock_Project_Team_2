@@ -3,7 +3,7 @@ const setRememberMe = (isRememberMe) => {
 }
 
 const isRememberMe = () => {
-    if(localStorage.getItem('isRememberMe') === null || localStorage.getItem('isRememberMe') === undefined){
+    if (localStorage.getItem('isRememberMe') === null || localStorage.getItem('isRememberMe') === undefined) {
         return true;
     };
     // convert string to boolean
@@ -24,6 +24,14 @@ const getItem = (key) => {
     } else {
         return sessionStorage.getItem(key);
     }
+}
+
+const setRole = (role) => {
+    setItem('role', role);
+}
+
+const getRole = () => {
+    return getItem('role');
 }
 
 const setToken = (token) => {
@@ -73,8 +81,8 @@ const getTourForeignID = () => {
 }
 
 const deleteStorage = () => {
-   return localStorage.clear();
+    return localStorage.clear();
 }
 
-const storage = { setToken, getToken, setUserInfo, getUserInfo, setRememberMe, isRememberMe, deleteStorage, setTourID, getTourID, setTourForeignID, getTourForeignID };
+const storage = { getRole, setRole, setToken, getToken, setUserInfo, getUserInfo, setRememberMe, isRememberMe, deleteStorage, setTourID, getTourID, setTourForeignID, getTourForeignID };
 export default storage;

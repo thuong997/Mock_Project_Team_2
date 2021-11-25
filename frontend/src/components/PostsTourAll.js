@@ -23,6 +23,8 @@ import * as Yup from 'yup';
 import { toastr } from 'react-redux-toastr';
 import { ReactstrapInput } from 'reactstrap-formik';
 
+// import avatar1 from "../assets/img/avatars/avatar.jpg";
+
 const Posts = ({ posts, loading }, props) => {
 
 
@@ -37,7 +39,7 @@ const Posts = ({ posts, loading }, props) => {
   //update
   const [isOpenModalUpdate, setOpenModalUpdate] = useState(false);
 
-  const [tourUpdateInfo, setTourUpdateInfo] = useState();
+  const [tourUpdateInfo, setTourUpdateInfo] = useState({});
 
 
 
@@ -63,11 +65,19 @@ const Posts = ({ posts, loading }, props) => {
     window.location.reload();
   }
 
+  const [, setTourNameInfo] = useState({});
 
   const deleteTour = async (tourId) => {
-    const confirmBox = window.confirm("Bạn có muốn xóa tour không");
+    // get id để lấy được tên để binding vào confirm
+    const result = await TourApi.getById(storage.getTourID(tourId))
+    setTourNameInfo(result);
+    console.log(result);
+    console.log(result.nameTour);
+    // binding vào confirm
+    const confirmBox = window.confirm(`Bạn có muốn xóa tour " ${result.nameTour} " không`);
     if (confirmBox === true) {
       await TourApi.deleteTour(storage.getTourID(tourId));
+
       showNotification(
         'Delete Group',
         'Delete Group Successfully !'
@@ -76,6 +86,11 @@ const Posts = ({ posts, loading }, props) => {
     }
   }
 
+  // const [previewImg1Url, setPreviewImg1Url] = useState();
+  // const [previewImg2Url, setPreviewImg2Url] = useState();
+  // const [previewImg3Url, setPreviewImg3Url] = useState();
+  // const [previewImg4Url, setPreviewImg4Url] = useState();
+  // const [previewImg5Url, setPreviewImg5Url] = useState();
 
   return (
     <>
@@ -85,7 +100,21 @@ const Posts = ({ posts, loading }, props) => {
           <Card  >
             <CardImg top width="100%" src={e.img1 ? `http://127.0.0.1:8887/img/${e.img1}` : "Ảnh sai"} alt="Card image cap" />
             <CardHeader >
-              <Icon.Trash size={20} style={{ float: 'right' }} onClick={() => deleteTour(storage.setTourID(e.tourId))} /><Icon.Edit size={20} style={{ float: 'right', marginRight: '5px' }} onClick={() => updateTour(storage.setTourID(e.tourId))} />
+              {storage.getRole() === "Admin" || storage.getRole() === "Manager" ?
+                <Icon.Trash size={20} style={{ float: 'right', display: 'block' }}
+                  onClick={() => deleteTour(storage.setTourID(e.tourId))}
+
+                /> : <Icon.Trash size={20} style={{ float: 'right', display: 'none' }}
+                  onClick={() => deleteTour(storage.setTourID(e.tourId))}
+
+                />}
+
+              {storage.getRole() === "Admin" || storage.getRole() === "Manager" ?
+                <Icon.Edit size={20} style={{ float: 'right', marginRight: '5px', display: 'block' }}
+                  onClick={() => updateTour(storage.setTourID(e.tourId))} /> : <Icon.Edit size={20}
+                    style={{ float: 'right', marginRight: '5px', display: 'none' }}
+                    onClick={() => updateTour(storage.setTourID(e.tourId))} />}
+
               <CardTitle tag="h5" className="mb-0">
                 {e.nameTour}
               </CardTitle>
@@ -153,8 +182,9 @@ const Posts = ({ posts, loading }, props) => {
           onSubmit={
             async (values) => {
 
-              console.log('tourrr:' + values);
+              console.log(storage.getRole());
               try {
+
                 await TourApi.updateTour(
                   tourUpdateInfo.tourId,
                   values.nameTour,
@@ -162,15 +192,14 @@ const Posts = ({ posts, loading }, props) => {
                   values.departureDay,
                   values.slotBlank,
                   values.money,
-                  values.img1,
-                  values.img2,
-                  values.img3,
-                  values.img4,
-                  values.img5,
+                  values.img1 === null && values.img1 === undefined ? tourUpdateInfo.img1 : values.img1,
+                  values.img2 === null && values.img2 === undefined ? tourUpdateInfo.img2 : values.img2,
+                  values.img3 === null && values.img3 === undefined ? tourUpdateInfo.img3 : values.img3,
+                  values.img4 === null && values.img4 === undefined ? tourUpdateInfo.img4 : values.img4,
+                  values.img5 === null && values.img5 === undefined ? tourUpdateInfo.img5 : values.img5,
                   values.day1,
                   values.day2
                 );
-
                 // show notification
                 showNotification('Update Tour', 'Update Tour Successfully!');
                 //close modal
@@ -272,39 +301,83 @@ const Posts = ({ posts, loading }, props) => {
                 </FormGroup>
                 <label>Chọn ảnh</label><br></br>
                 {/* img1 */}
+                {/* <img
+                  alt="Chris Wood"
+                  src={previewImg1Url ? previewImg1Url :
+                    (tourUpdateInfo.img1 ? `http://127.0.0.1:8887/img/${tourUpdateInfo.img1}` : avatar1)}
+                  width="150"
+                  height="100"
+                /> */}
                 <input type='file'
                   name='img1'
                   id='img1'
+                  style={{ display: 'block' }}
                   onChange={(event) => { setFieldValue("img1", event.currentTarget.files[0]) }}
-                // style={{ display: 'none' }}
+
                 /><br></br>
 
                 {/* img2 */}
+                {/* <img
+                  alt="Chris Wood"
+                  src={previewImg2Url ? previewImg2Url :
+                    (tourUpdateInfo.img2 ? `http://127.0.0.1:8887/img/${tourUpdateInfo.img2}` : avatar1)}
+                  width="150"
+                  height="100"
+                /> */}
                 <input type='file'
                   name='img2'
                   id='img2'
+
                   onChange={(event) => { setFieldValue("img2", event.currentTarget.files[0]) }}
+                  style={{ display: 'block' }}
                 /><br></br>
 
                 {/* img3 */}
+                {/* <img
+                  alt="Chris Wood"
+                  src={previewImg3Url ? previewImg3Url :
+                    (tourUpdateInfo.img3 ? `http://127.0.0.1:8887/img/${tourUpdateInfo.img3}` : avatar1)}
+                  width="150"
+                  height="100"
+                /> */}
                 <input type='file'
                   name='img3'
                   id='img3'
+
                   onChange={(event) => { setFieldValue("img3", event.currentTarget.files[0]) }}
+                  style={{ display: 'block' }}
                 /><br></br>
 
                 {/* img4 */}
+                {/* <img
+                  alt="Chris Wood"
+                  src={previewImg4Url ? previewImg4Url :
+                    (tourUpdateInfo.img4 ? `http://127.0.0.1:8887/img/${tourUpdateInfo.img4}` : avatar1)}
+                  width="150"
+                  height="100"
+                /> */}
                 <input type='file'
                   name='img4'
                   id='img4'
+
                   onChange={(event) => { setFieldValue("img4", event.currentTarget.files[0]) }}
+                  style={{ display: 'block' }}
                 /><br></br>
 
                 {/* img5 */}
+                {/* <img
+                  alt="Chris Wood"
+                  src={previewImg5Url ? previewImg5Url :
+                    (tourUpdateInfo.img5 ? `http://127.0.0.1:8887/img/${tourUpdateInfo.img5}` : avatar1)}
+                  width="150"
+                  height="100"
+                /> */}
                 <input type='file'
                   name='img5'
                   id='img5'
+
                   onChange={(event) => { setFieldValue("img5", event.currentTarget.files[0]) }}
+                  style={{ display: 'block' }}
                 />
 
               </ModalBody>

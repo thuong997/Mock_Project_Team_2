@@ -19,7 +19,7 @@ import { FastField, Form, Formik } from "formik";
 import * as Yup from 'yup';
 import { toastr } from "react-redux-toastr";
 import { ReactstrapInput } from "reactstrap-formik";
-import Container from "reactstrap/lib/Container";
+import storage from "../Storage/Storage";
 
 // import { getListTourAction } from "../redux/actions/TourAction";
 // import { selectPage, selectSelectedRows, selectSize, selectTotalSize, selectTours } from "../redux/Selectors/TourSelectors";
@@ -86,11 +86,13 @@ const FormTourAll = (props) => {
         toastr.success(title, message, options);
     }
 
-    
+
 
     return (
-        <Container>
-            <h2><b><label>TOUR DU LỊCH TRONG NƯỚC <Icon.PlusCircle size={32} onClick={() => setOpenModalCreate(true)} /></label></b></h2><br></br>
+        <>
+            <h2><b><label>TOUR DU LỊCH TRONG NƯỚC {storage.getRole() === "Admin" || storage.getRole() === "Manager" ?
+                <Icon.PlusCircle size={32} onClick={() => setOpenModalCreate(true)} style={{ display: 'block' }} /> :
+                <Icon.PlusCircle size={32} onClick={() => setOpenModalCreate(true)} style={{ display: 'none' }} />} </label></b></h2><br></br>
             <Row>
                 <Cards />
 
@@ -375,7 +377,7 @@ const FormTourAll = (props) => {
                 </Formik>
             </Modal>
 
-        </ Container>
+        </ >
     )
 }
 
